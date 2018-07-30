@@ -1,0 +1,50 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.center {
+  display: block;
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+#game-card {
+  background-color: #f2f2f2;
+  min-height: 300px;
+  padding: 0px;
+  max-width: 350px;
+  margin: 0px auto 25px auto;
+}
+
+  #game-card ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+    #game-card ul li {
+      padding: 10px 0px;
+      min-height: 25px;
+    }
+
+  #guess-word {
+    background-color: #80ccff;
+  }
+
+button {
+  padding: 15px 20px;
+  font-family: 'Open Sans', sans-serif;
+  background: transparent;
+  border-width: 1px;
+  border-color: #b3b3b3;
+  border-radius: 10px;
+  color: #b3b3b3;
+}
+
+  button:focus {
+    outline: none;
+  }
+
+  button:hover {
+    background-color: #f2f2f2;
+  }
