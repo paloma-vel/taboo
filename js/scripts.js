@@ -20,3 +20,19 @@ function randomizer(max) {
     li.append(el);
   });
 };
+
+let count1 = 0;
+
+function incrementScore1() {
+  let score = document.getElementById("team1-score");
+  count1++;
+  score.innerHTML = count1;
+}
+
+let count2 = 0;
+
+function incrementScore2() {
+  let score = document.getElementById("team2-score");
+  count2++;
+  score.innerHTML = count2;
+}
