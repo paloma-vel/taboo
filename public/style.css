@@ -1,0 +1,215 @@
+body {
+  background-color: #D2E3E7;
+  color: #404654;
+}
+
+h1 {
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 3px;
+  margin: 10px 0px 0px 0px;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  font-family: 'Roboto', sans-serif;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.col {
+  width: 48%;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.intro {
+  margin-bottom: 30px;
+}
+
+.how-to-play {
+  color: #A4B2C9;
+}
+
+  .how-to-play:hover {
+    cursor: pointer;
+  }
+
+
+.card {
+  width: 60%;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 30px 0px #657893;
+  -moz-box-shadow: 5px 5px 30px 0px #657893;
+  box-shadow: 5px 5px 30px 0px #657893;
+}
+
+.change-card {
+  margin: 20px 10px 10px 10px;
+}
+
+  .next-card {
+    font-size: 36px;
+    color: #657893;
+  }
+
+  .next-card:hover {
+    cursor: pointer;
+    color: #404654;
+  }
+
+  .next-card:active {
+    transform: translateY(2px);
+  }
+
+.goal-word {
+  background-color: #657893;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  border-radius: 10px 10px 0px 0px;
+  margin: 0;
+  padding: .75em;
+}
+
+.taboo-words {
+  list-style-type: none;
+  padding: 0;
+}
+
+  .taboo-words li {
+    padding: 10px;
+  }
+
+/* Timer -------------------- */
+.timer {
+  width: 100%;
+  border: 2px solid #A4B2C9;
+}
+
+.timer-buttons {
+  width: 125px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+  .timer-buttons i {
+    color: #657893;
+    font-size: 20px;
+  }
+  
+  .timer-buttons i:hover {
+    cursor: pointer;
+    color: #404654;
+  }
+
+  .timer-buttons i:active {
+    transform: translateY(2px);
+  }
+
+.countdown {
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 3px;
+  font-size: 25px;
+  margin-top: 10px;
+  display: block;
+}
+
+/* Scorekeeping -------------------- */
+.score {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  margin: 1em 0;
+  width: 100%;
+}
+
+  .score-container {
+    background-color: #A4B2C9;
+    width: 48%;
+  }
+
+  .team {
+    padding-top: 10px;
+    display: block;
+  }
+
+  .each-score {
+    font-family: 'Staatliches', cursive;
+    font-size: 36px;
+    padding: 10px 0px;
+    display: block;
+  }
+
+  .score-buttons {
+    margin-bottom: 20px;
+  }
+
+  .add-point, .subtract-point {
+    font-size: 30px;
+    color: #657893;
+  }
+
+  .add-point:hover, .subtract-point:hover {
+    cursor: pointer;
+    color: #404654;
+  }
+
+  .add-point:active, .subtract-point:active {
+    transform: translateY(2px);
+  }
+
+  .subtract-point {
+    margin-right: 20px;
+  }
+
+
+/* MEDIA QUERIES: Tablets ----------- */
+@media only screen and (max-width : 768px) {
+  #container {
+    width: 90%;
+  }
+  .card {
+    width: 80%;
+  }
+}
+
+/* MEDIA QUERIES: Smaller Screens ----------- */
+@media only screen and (max-width : 500px) {
+  #container {
+    width: 100%;
+  }
+  .row {
+    display: block;
+  }
+  .col {
+    width: 100%;
+  }
+  .timer {
+    display: none;
+  }
+  .card {
+    width: 80%;
+  }
+}
+
+
