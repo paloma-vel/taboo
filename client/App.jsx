@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import Card from './Card.jsx';
 import Score from './Score.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ class App extends React.Component {
     this.subtractPointB = this.subtractPointB.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-
+    this.getNewCard = this.getNewCard.bind(this);
   }
 
   addPointA() {
@@ -51,6 +52,23 @@ class App extends React.Component {
     this.setState({showModal: false})
   }
 
+  getNewCard() {
+    axios.get('/api/word')
+    .then((response) => {
+      this.setState({
+        word: response.data[0].word,
+        tabooWords: response.data[0].taboo
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+  componentDidMount() {
+    this.getNewCard();
+  }
+
   render() {
     return (
       <div id="container">
@@ -79,9 +97,9 @@ class App extends React.Component {
         </div>
         <div className="row">
             <div className="col">
-              <Card />
+              <Card word={this.state.word} tabooWords={this.state.tabooWords}/>
               <div className="change-card">
-                  <i className="next-card far fa-arrow-alt-circle-right"></i>
+                  <i className="next-card far fa-arrow-alt-circle-right" onClick={this.getNewCard}></i>
               </div>
             </div>
             <div className="col">

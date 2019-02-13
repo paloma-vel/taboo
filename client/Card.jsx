@@ -8,13 +8,13 @@ class Card extends React.Component {
   render() {
     return (
       <div className="card">
-        <h3 className="goal-word">Goal Word</h3>
+        <h3 className="goal-word">{this.props.word}</h3>
         <ul className="taboo-words">
-          <li>Taboo Word</li>
-          <li>Taboo Word</li>
-          <li>Taboo Word</li>
-          <li>Taboo Word</li>
-          <li>Taboo Word</li>
+          <li>{this.props.tabooWords[0]}</li>
+          <li>{this.props.tabooWords[1]}</li>
+          <li>{this.props.tabooWords[2]}</li>
+          <li>{this.props.tabooWords[3]}</li>
+          <li>{this.props.tabooWords[4]}</li>
         </ul>
       </div>
     )
