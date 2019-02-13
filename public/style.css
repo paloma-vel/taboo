@@ -1,6 +1,7 @@
 body {
   background-color: #D2E3E7;
   color: #404654;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -52,6 +53,38 @@ h1 {
     cursor: pointer;
   }
 
+.modal {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  right: 20%;
+  bottom: 10%;
+  border: 2px solid #A4B2C9;
+  background: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px 40px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+  .modal h3 {
+    text-align: center;
+  }
+
+.close-modal-btn {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 30px;
+  color: #A4B2C9;
+}
+
+.close-modal-btn:hover {
+  cursor: pointer;
+}
 
 .card {
   width: 60%;
@@ -190,6 +223,10 @@ h1 {
   }
   .card {
     width: 80%;
+  }
+  .modal {
+    right: 10%;
+    left: 10%;
   }
 }
 

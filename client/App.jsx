@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import Card from './Card.jsx';
 import Score from './Score.jsx';
 
@@ -10,12 +11,15 @@ class App extends React.Component {
       word: '',
       tabooWords: [],
       scoreA: 0,
-      scoreB: 0
+      scoreB: 0,
+      showModal: false
     }
     this.addPointA = this.addPointA.bind(this);
     this.addPointB = this.addPointB.bind(this);
     this.subtractPointA = this.subtractPointA.bind(this);
     this.subtractPointB = this.subtractPointB.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
 
   }
 
@@ -39,12 +43,39 @@ class App extends React.Component {
     }
   }
 
+  handleOpenModal() {
+    this.setState({showModal: true})
+  }
+
+  handleCloseModal() {
+    this.setState({showModal: false})
+  }
+
   render() {
     return (
       <div id="container">
         <div className="intro">
             <h1>Taboo</h1>
-            <i className="how-to-play far fa-question-circle"></i>
+            <i className="how-to-play far fa-question-circle" onClick={this.handleOpenModal}></i>
+            <Modal 
+              isOpen={this.state.showModal}
+              contentLabel="Minimal Modal Example"
+              className="modal"
+            >
+              <div class="modal-container">
+                <i class="close-modal-btn fas fa-window-close" onClick={this.handleCloseModal}></i>
+                <div class="modal-text">
+                  <h3>How to Play</h3>
+                  <p>The goal is to get your teammates to guess the word at the top of the card, without saying any of the forbidden (or "taboo") words listed below.</p>
+                  <p>Try for as many correct guesses as possible within the time allotted by the timer. Each correct guess by your teammates wins your team a point!</p>
+                  <h3>Rules</h3>
+                  <ul>
+                    <li>You can't say any part of the words listed (for example, if the word is "treehouse", you can't say "tree").</li>
+                    <li>You can only use words to describe things - no gesturing, pantomiming, drawing, or making noises (like quacking).</li>
+                  </ul>
+                </div>
+              </div>
+            </Modal>
         </div>
         <div className="row">
             <div className="col">
