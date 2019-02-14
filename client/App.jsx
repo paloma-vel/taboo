@@ -13,7 +13,10 @@ class App extends React.Component {
       tabooWords: [],
       scoreA: 0,
       scoreB: 0,
-      showModal: false
+      showModal: false,
+      timerOn: false,
+      min: 1,
+      sec: 0
     }
     this.addPointA = this.addPointA.bind(this);
     this.addPointB = this.addPointB.bind(this);
@@ -22,6 +25,9 @@ class App extends React.Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.getNewCard = this.getNewCard.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.stopTimer = this.stopTimer.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
   }
 
   addPointA() {
@@ -52,6 +58,43 @@ class App extends React.Component {
     this.setState({showModal: false})
   }
 
+  startTimer() {
+    this.timer = setInterval(() => {
+      if (this.state.min === 1 && this.state.sec === 0) {
+        this.setState({
+          timerOn: true,
+          min: 0,
+          sec: 59
+        })
+      } else if (this.state.min === 0 && this.state.sec > 0) {
+        this.setState({
+          min: 0,
+          sec: this.state.sec - 1
+        })
+      } else if (this.state.min === 0 && this.state.sec === 0) {
+        this.setState({
+          timerOn: false
+        })
+      }
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.timer);
+    this.setState({
+      timerOn: false
+    })
+  }
+
+  resetTimer() {
+    clearInterval(this.timer);
+    this.setState({
+      timerOn: false,
+      min: 1,
+      sec: 0
+    })
+  }
+
   getNewCard() {
     axios.get('/api/word')
     .then((response) => {
@@ -77,7 +120,6 @@ class App extends React.Component {
             <i className="how-to-play far fa-question-circle" onClick={this.handleOpenModal}></i>
             <Modal 
               isOpen={this.state.showModal}
-              contentLabel="Minimal Modal Example"
               className="modal"
             >
               <div class="modal-container">
@@ -88,7 +130,7 @@ class App extends React.Component {
                   <p>Try for as many correct guesses as possible within the time allotted by the timer. Each correct guess by your teammates wins your team a point!</p>
                   <h3>Rules</h3>
                   <ul>
-                    <li>You can't say any part of the words listed (for example, if the word is "treehouse", you can't say "tree").</li>
+                    <li>You're not allowed to say any part of the words listed (for example, if the word is "treehouse", you can't say "tree"). If you do, your team loses a point.</li>
                     <li>You can only use words to describe things - no gesturing, pantomiming, drawing, or making noises (like quacking).</li>
                   </ul>
                 </div>
@@ -104,11 +146,13 @@ class App extends React.Component {
             </div>
             <div className="col">
               <div className="timer">
-                  <span className="countdown">1:00</span>
+                  <span className="countdown">
+                    {this.state.min}:{this.state.sec < 10 ? '0' + this.state.sec : this.state.sec}
+                  </span>
                   <div className="timer-buttons">
-                    <i className="fas fa-play"></i>
-                    <i className="fas fa-stop"></i>
-                    <i className="fas fa-undo-alt"></i>
+                    <i className="fas fa-play" onClick={this.startTimer}></i>
+                    <i className="fas fa-stop" onClick={this.stopTimer}></i>
+                    <i className="fas fa-undo-alt" onClick={this.resetTimer}></i>
                   </div>
               </div>
               <Score
